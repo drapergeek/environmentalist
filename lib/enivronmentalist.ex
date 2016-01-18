@@ -4,7 +4,7 @@ defmodule Enivronmentalist do
   end
 
   def process([]) do
-    IO.puts "No arguments given"
+    sampe_file = EnvFileParser.for_file(".env")
   end
 
   def process(options) do
