@@ -1,10 +1,9 @@
 defmodule EnvFileParserTest do
   use ExUnit.Case
+  import EnvHelper
 
   setup do
-    File.rm_rf("tmp")
-    File.mkdir("tmp")
-    :ok
+    clear_files
   end
 
   test "excludes commments and empty lines" do
@@ -31,11 +30,5 @@ defmodule EnvFileParserTest do
 
     assert first_entry.key == "MY_KEY"
     assert first_entry.value == "my_value"
-  end
-
-  def create_env_file(text) do
-    file_name = "tmp/env-#{:random.uniform(10000)}"
-    File.write file_name, text, [:write]
-    file_name
   end
 end
