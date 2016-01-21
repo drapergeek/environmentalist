@@ -4,10 +4,13 @@ defmodule Enivronmentalist do
   end
 
   def process([]) do
-    sampe_file = EnvFileParser.for_file(".env")
   end
 
   def process(options) do
+    sample_file = EnvFileHandler.parse(options[:sample])
+    actual_file = EnvFileHandler.parse(options[:actual])
+    differences = EnvFileComparison.compare(sample_file, actual_file)
+    EnvFileHandler.write_keys(options[:actual], differences)
   end
 
   defp parse_args(args) do
