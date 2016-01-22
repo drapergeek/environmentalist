@@ -1,4 +1,4 @@
-defmodule EnvFileParserTest do
+defmodule EnvFileHandlerTest do
   use ExUnit.Case
   import EnvHelper
 
@@ -17,7 +17,7 @@ defmodule EnvFileParserTest do
     #commented
     """
 
-    parsed = EnvFileParser.for_file(env_file)
+    parsed = EnvFileHandler.parse(env_file)
 
     assert Enum.count(parsed) == 5
   end
@@ -26,7 +26,7 @@ defmodule EnvFileParserTest do
     env_file = create_env_file ~s"""
     MY_KEY=my_value
     """
-    [first_entry | _ ] = EnvFileParser.for_file(env_file)
+    [first_entry | _ ] = EnvFileHandler.parse(env_file)
 
     assert first_entry.key == "MY_KEY"
     assert first_entry.value == "my_value"

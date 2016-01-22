@@ -13,6 +13,10 @@ defmodule EnvFileHandler do
     end
   end
 
+  defp format_entry(entry) do
+    entry.key <> "=" <> entry.value
+  end
+
   defp remove_empty_and_comment_strings(list) do
     Enum.filter list, fn (string) ->
       String.length(string) >= 1 && !String.starts_with?(string, "#")
@@ -23,9 +27,5 @@ defmodule EnvFileHandler do
     Enum.map list, fn (entry) ->
       EnvironmentEntry.parse(entry)
     end
-  end
-
-  defp format_entry(entry) do
-    entry.key <> "=" <> entry.value
   end
 end
