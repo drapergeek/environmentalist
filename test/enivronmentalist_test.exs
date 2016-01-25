@@ -8,14 +8,14 @@ defmodule EnivronmentalistTest do
   end
 
   test "it adds missing entries" do
-    sample_file = create_env_file ~s"""
+    sample = create_env_file ~s"""
     SOMETHING=test
     """
-    actual_file = create_env_file ""
+    actual = create_env_file ""
 
-    Enivronmentalist.process(sample_file: sample_file, actual_file: actual_file)
+    Enivronmentalist.process(sample: sample, actual: actual)
 
-    {:ok, file_text} = File.read actual_file
+    {:ok, file_text} = File.read actual
 
     assert String.contains?(file_text, "SOMETHING=test")
   end
