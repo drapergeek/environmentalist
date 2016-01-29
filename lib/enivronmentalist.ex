@@ -4,17 +4,22 @@ defmodule Enivronmentalist do
   end
 
   def process([]) do
+    process([".sample.env", ".env"])
   end
 
-  def process(options) do
-    sample_file = EnvFileHandler.parse(options[:sample])
-    actual_file = EnvFileHandler.parse(options[:actual])
+  def process([_]) do
+    IO.puts "You must provide the location of both the sample and the actual file"
+  end
+
+  def process([sample, actual]) do
+    sample_file = EnvFileHandler.parse(sample)
+    actual_file = EnvFileHandler.parse(actual)
     differences = EnvFileComparison.compare(sample_file, actual_file)
-    EnvFileHandler.write_keys(options[:actual], differences)
+    EnvFileHandler.write_keys(actual, differences)
   end
 
   defp parse_args(args) do
-    {options, _, _} = OptionParser.parse(args)
-    options
+    {_, files, _} = OptionParser.parse(args)
+    files
   end
 end

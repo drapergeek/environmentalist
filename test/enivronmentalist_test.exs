@@ -13,7 +13,7 @@ defmodule EnivronmentalistTest do
     """
     actual = create_env_file ""
 
-    Enivronmentalist.process(sample: sample, actual: actual)
+    Enivronmentalist.process([sample, actual])
 
     {:ok, file_text} = File.read actual
 
