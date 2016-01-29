@@ -3,12 +3,20 @@ defmodule Environmentalist do
     args |> parse_args |> process
   end
 
-  def process([]) do
+  def process({[version: _], []}) do
+    IO.puts "0.0.1"
+  end
+
+  def process({_, []}) do
     process([".sample.env", ".env"])
   end
 
-  def process([_]) do
+  def process({_, [_]}) do
     IO.puts "You must provide the location of both the sample and the actual file"
+  end
+
+  def process({_, [sample, actual]}) do
+    process([sample, actual])
   end
 
   def process([sample, actual]) do
@@ -19,7 +27,7 @@ defmodule Environmentalist do
   end
 
   defp parse_args(args) do
-    {_, files, _} = OptionParser.parse(args)
-    files
+    {options, files, _} = OptionParser.parse(args)
+    IO.inspect {options, files}
   end
 end
