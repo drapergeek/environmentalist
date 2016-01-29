@@ -1,4 +1,4 @@
-# Enivronmentalist
+# Environmentalist
 
 **TODO: Add description**
 

@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :enivronmentalist, key: :value
+#     config :envronmentalist, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:enivronmentalist, :key)
+#     Application.get_env(:environmentalist, :key)
 #
 # Or configure a 3rd-party app:
 #

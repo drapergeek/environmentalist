@@ -1,6 +1,6 @@
-defmodule EnivronmentalistTest do
+defmodule EnvironmentalistTest do
   use ExUnit.Case
-  doctest Enivronmentalist
+  doctest Environmentalist
   import EnvHelper
 
   setup do
@@ -13,7 +13,7 @@ defmodule EnivronmentalistTest do
     """
     actual = create_env_file ""
 
-    Enivronmentalist.process([sample, actual])
+    Environmentalist.process([sample, actual])
 
     {:ok, file_text} = File.read actual
 

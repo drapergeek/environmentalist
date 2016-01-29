@@ -1,13 +1,13 @@
-defmodule Enivronmentalist.Mixfile do
+defmodule Environmentalist.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :enivronmentalist,
+    [app: :environmentalist,
      version: "0.0.1",
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     escript: [main_module: Enivronmentalist],
+     escript: [main_module: Environmentalist],
      deps: deps]
   end
 

@@ -1,4 +1,4 @@
-defmodule Enivronmentalist do
+defmodule Environmentalist do
   def main(args) do
     args |> parse_args |> process
   end
